@@ -1,5 +1,8 @@
 .todo{
     font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
    .head-section{
     background-image: url("../images/bg-desktop-light.jpg");
     height: 300px;
@@ -56,8 +59,89 @@
     }
     } 
     .todo-list{
+        width: 540px;
+        margin: auto;
+        margin-top: -50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 5px;
+        box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
         .todo-item{
-            
+            width: 540px;
+            height: 64px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #E3E4F1;
+
+            &:nth-child(1){
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+            button{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                margin-right: 20px;
+                border: 0.5px solid #aaa8a8;
+                background-color: #ffffff;
+            }
+            h3{
+                font-size: 18px;
+                line-height: 18px;
+                letter-spacing: -0.25px;
+                font-weight: 400;
+                color: #9495A5;
+            }
         }
+        .filter-section{
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p{
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 14px;
+                letter-spacing: -0.194444px;
+                color: #9495A5;
+            }
+            .filter{
+                button{
+                    background-color: transparent;
+                    border: none;
+                    padding: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 14px;
+                    letter-spacing: -0.2px;
+                    color: #9495A5;
+                }
+            }
+            .clear{
+                button{
+                    background-color: transparent;
+                    border: none;
+                    padding: 7px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 14px;
+                    letter-spacing: -0.2px;
+                    color: #9495A5;
+                }
+                
+            }
+        }
+    }
+    h4{
+        margin: auto;
+        margin-top: 37px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: -0.2px;
+        color: #9495A5;    
     }
 }

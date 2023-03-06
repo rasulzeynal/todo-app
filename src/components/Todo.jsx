@@ -20,7 +20,24 @@ const Todo = () => {
                 <button ></button>
                 <h3>Complete online JS course</h3>
                 </div>
+                <div className='todo-item'>
+                <button ></button>
+                <h3>Complete online JS course</h3>
+                </div>
+                <div className='filter-section'>
+                  <p>5 items left</p>
+                  <div className='filter'>
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                  </div>
+                  <div className='clear'>
+                    <button>Clear</button>
+                    <button>Completed</button>
+                  </div>
+                </div>
             </div>
+            <h4>Drag and drop to reorder list</h4>
     </div>
   )
 }
