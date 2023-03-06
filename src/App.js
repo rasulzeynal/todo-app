@@ -1,9 +1,10 @@
-import './App.css';
+import './App.scss';
+import Todo from './components/Todo';
 
 function App() {
   return (
     <div className="App">
-      Test
+      <Todo/>
     </div>
   );
 }
