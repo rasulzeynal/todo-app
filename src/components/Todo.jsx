@@ -1,21 +1,22 @@
-import React from 'react';
 import moon from "../assests/images/icon-moon.svg";
+import sun from "../assests/images/icon-sun.svg";
 import "../assests/styles/todo.scss"
 
-const Todo = () => {
+const Todo = ({darkMode, setDarkMode}) => {
+  
   return (
-    <div className='todo'>
+    <div className={darkMode ? "dark todo" : "todo"}>
             <div className="head-section">
                 <div className="header">
                     <h1>TODO</h1>
-                    <img src={moon} alt="moon"/>
+                    <img src={darkMode ? sun : moon} alt="moon" onClick={() => setDarkMode(!darkMode)}/>
                 </div>
                 <div className='input'>
                     <button ></button>
                     <input placeholder='Create a new todo...'/>
                 </div>
             </div>
-            <div className='todo-list'>
+            <div className="todo-list">
                 <div className='todo-item'>
                 <button ></button>
                 <h3>Complete online JS course</h3>

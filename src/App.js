@@ -1,10 +1,13 @@
 import './App.scss';
 import Todo from './components/Todo';
+import React, { useState } from 'react';
+
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <div className="App">
-      <Todo/>
+    <div className={darkMode ? "App dark" : "App"}>
+      <Todo darkMode={darkMode} setDarkMode={setDarkMode}/>
     </div>
   );
 }
