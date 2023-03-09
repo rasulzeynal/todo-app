@@ -1,9 +1,25 @@
 import moon from "../assests/images/icon-moon.svg";
 import sun from "../assests/images/icon-sun.svg";
-import "../assests/styles/todo.scss"
+import "../assests/styles/todo.scss";
+import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteItem, editItem,addItem } from '../redux/itemSlice';
 
 const Todo = ({darkMode, setDarkMode}) => {
-  
+  const [text, setText] = useState('');
+  const items = useSelector((state) => state.items.items);
+  const dispatch = useDispatch();
+
+  const handleDeleteItem = (id) => {
+    dispatch(deleteItem(id));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newItem = { id: Date.now(), text };
+    dispatch(addItem(newItem));
+    setText('');
+  };
+  console.log(items);
   return (
     <div className={darkMode ? "dark todo" : "todo"}>
             <div className="head-section">
@@ -12,8 +28,8 @@ const Todo = ({darkMode, setDarkMode}) => {
                     <img src={darkMode ? sun : moon} alt="moon" onClick={() => setDarkMode(!darkMode)}/>
                 </div>
                 <div className='input'>
-                    <button ></button>
-                    <input placeholder='Create a new todo...'/>
+                    <button onSubmit={handleSubmit}></button>
+                    <input placeholder='Create a new todo...' type="text" value={text} onChange={(event) => setText(event.target.value)}/>
                 </div>
             </div>
             <div className="todo-list">
