@@ -47,6 +47,7 @@
         margin-right: 20px;
         border: 0.5px solid #aaa8a8;
         background-color: #ffffff;
+        cursor: pointer;
       }
       input {
         border: none;
@@ -90,6 +91,7 @@
         margin-right: 20px;
         border: 0.5px solid #aaa8a8;
         background-color: #ffffff;
+        cursor: pointer;
       }
       h3 {
         font-size: 18px;
@@ -97,6 +99,7 @@
         letter-spacing: -0.25px;
         font-weight: 400;
         color: #9495a5;
+        
       }
     }
     .filter-section {
@@ -178,4 +181,10 @@
         }
     }
   }
+}
+
+
+.completed{
+  background-image: url("../images/icon-check.svg");
+  cursor: pointer;
 }

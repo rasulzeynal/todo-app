@@ -4,11 +4,10 @@ import "../assests/styles/todo.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo, editTodo, deleteTodo } from "../redux/todoSlice";
+import { addTodo, toggleTodo, removeAllTodos } from "../redux/todoSlice";
 
 const Todo = ({ darkMode, setDarkMode }) => {
   const [inputValue, setInputValue] = useState("");
-  const [editId, setEditId] = useState(null);
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -17,16 +16,6 @@ const Todo = ({ darkMode, setDarkMode }) => {
     if (!inputValue.trim()) {
       return;
     }
-    if (editId) {
-      dispatch(
-        editTodo({
-          id: editId,
-          title: inputValue,
-        })
-      );
-      setInputValue("");
-      setEditId(null);
-    } else {
       dispatch(
         addTodo({
           id: nanoid(),
@@ -34,20 +23,16 @@ const Todo = ({ darkMode, setDarkMode }) => {
         })
       );
       setInputValue("");
-    }
   };
 
-  const handleEdit = (id) => {
-    const todoToEdit = todos.find((todo) => todo.id === id);
-    if (todoToEdit) {
-      setInputValue(todoToEdit.title);
-      setEditId(id);
-    }
+  const handleToggleTodo = () => {
+    dispatch(toggleTodo(todos.id));
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteTodo(id));
+  const handleDeleteAllTodos = () => {
+    dispatch(removeAllTodos());
   };
+
   console.log(todos);
   return (
     <div className={darkMode ? "dark todo" : "todo"}>
@@ -73,9 +58,9 @@ const Todo = ({ darkMode, setDarkMode }) => {
         </div>
       </div>
       {todos.map((todo) => (
-      <div className="todo-list" key={todo.title}>
+      <div className="todo-list" key={todo.id}>
           <div className="todo-item">
-          <button onClick={() => handleDelete(todo.id)}></button>
+          <button className= "completed" onChange={handleToggleTodo}></button>
           <h3>{todo.title}</h3>
         </div>
         <div className="filter-section">
@@ -86,8 +71,7 @@ const Todo = ({ darkMode, setDarkMode }) => {
             <button>Completed</button>
           </div>
           <div className="clear">
-            <button>Clear</button>
-            <button>Completed</button>
+            <button onClick={handleDeleteAllTodos}>Clear Completed</button>
           </div>
         </div>
       </div>
