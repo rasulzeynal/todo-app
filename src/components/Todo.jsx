@@ -4,7 +4,7 @@ import "../assests/styles/todo.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo, toggleTodo, removeAllTodos } from "../redux/todoSlice";
+import { addTodo,toggleTodo, clearCompleted } from "../redux/todoSlice";
 import { toggleTheme } from "../redux/themeSlice";
 
 const Todo = ({ darkMode, setDarkMode }) => {
@@ -31,15 +31,15 @@ const Todo = ({ darkMode, setDarkMode }) => {
       setInputValue("");
   };
 
-  const handleToggleTodo = () => {
-    dispatch(toggleTodo(todos.id));
+  const handleToggleTodo = (id) => {
+    dispatch(toggleTodo(id));
   };
 
-  const handleDeleteAllTodos = () => {
-    dispatch(removeAllTodos());
+  const handleClearCompleted = () => {
+    dispatch(clearCompleted());
   };
 
-  console.log(todos.length);
+  console.log(todos);
   return (
     <div className={`${theme === 'dark' ? 'dark todo' : 'todo'}`} >
       <div className="head-section">
@@ -65,21 +65,21 @@ const Todo = ({ darkMode, setDarkMode }) => {
       </div>
       
       <div className="todo-list">
-      {todos.map((todo) => (
+      {todos.todos.map((todo) => (
           <div className="todo-item" key={todo.id}>
-          <button className= "completed" onChange={handleToggleTodo}></button>
+          <input type="checkbox"  className= "completed" onChange={() => handleToggleTodo(todo.id)}/>
           <h3>{todo.title}</h3>
         </div>
         ))}
         <div className="filter-section">
-          <p>{todos.length} items left</p>
+          <p>{todos.todos.length} items left</p>
           <div className="filter">
             <button>All</button>
             <button>Active</button>
             <button>Completed</button>
           </div>
           <div className="clear">
-            <button onClick={handleDeleteAllTodos}>Clear Completed</button>
+            <button onClick={handleClearCompleted}>Clear Completed</button>
           </div>
         </div>
       </div>

@@ -85,9 +85,7 @@
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
       }
-      button {
-        width: 25px;
-        height: 25px;
+      input {
         border-radius: 50%;
         margin-right: 20px;
         border: 0.5px solid #aaa8a8;
@@ -125,6 +123,7 @@
           line-height: 14px;
           letter-spacing: -0.2px;
           color: #9495a5;
+          cursor: pointer;
         }
       }
       .clear {
@@ -137,6 +136,7 @@
           line-height: 14px;
           letter-spacing: -0.2px;
           color: #9495a5;
+          cursor: pointer;
         }
       }
     }
@@ -179,7 +179,7 @@
         background: #25273D;
         border-bottom: 1px solid #aaa8a8 ;
 
-        button{
+        input{
             background: #25273D;
         }
     }
