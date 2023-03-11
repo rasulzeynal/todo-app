@@ -5,11 +5,17 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { addTodo, toggleTodo, removeAllTodos } from "../redux/todoSlice";
+import { toggleTheme } from "../redux/themeSlice";
 
 const Todo = ({ darkMode, setDarkMode }) => {
   const [inputValue, setInputValue] = useState("");
   const todos = useSelector((state) => state.todos);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+
+  function handleToggleTheme() {
+    dispatch(toggleTheme());
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,16 +39,16 @@ const Todo = ({ darkMode, setDarkMode }) => {
     dispatch(removeAllTodos());
   };
 
-  console.log(todos);
+  console.log(todos.length);
   return (
-    <div className={darkMode ? "dark todo" : "todo"}>
+    <div className={`${theme === 'dark' ? 'dark todo' : 'todo'}`} >
       <div className="head-section">
         <div className="header">
           <h1>TODO</h1>
           <img
-            src={darkMode ? sun : moon}
+            src={`${theme === 'dark' ? sun : moon}`}
             alt="moon"
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={handleToggleTheme}
           />
         </div>
         <div className="input" onSubmit={handleSubmit}>
@@ -57,14 +63,16 @@ const Todo = ({ darkMode, setDarkMode }) => {
           </form>
         </div>
       </div>
+      
+      <div className="todo-list">
       {todos.map((todo) => (
-      <div className="todo-list" key={todo.id}>
-          <div className="todo-item">
+          <div className="todo-item" key={todo.id}>
           <button className= "completed" onChange={handleToggleTodo}></button>
           <h3>{todo.title}</h3>
         </div>
+        ))}
         <div className="filter-section">
-          <p>5 items left</p>
+          <p>{todos.length} items left</p>
           <div className="filter">
             <button>All</button>
             <button>Active</button>
@@ -75,7 +83,7 @@ const Todo = ({ darkMode, setDarkMode }) => {
           </div>
         </div>
       </div>
-      ))}
+      
       <h4>Drag and drop to reorder list</h4>
     </div>
   );

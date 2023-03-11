@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
   .head-section {
     background-image: url("../images/bg-desktop-light.jpg");
     height: 300px;
@@ -152,6 +153,8 @@
 }
 
 .dark {
+  height: 100vh;
+  background-color: #25273d;
   .head-section {
     background-image: url("../images/bg-desktop-dark.jpg") !important;
 
