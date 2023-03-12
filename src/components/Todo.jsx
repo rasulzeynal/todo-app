@@ -4,12 +4,12 @@ import "../assests/styles/todo.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo,toggleTodo, clearCompleted } from "../redux/todoSlice";
+import { addTodo,toggleTodo, clearCompleted,showAllTodos, showActiveTodos, showCompletedTodos } from "../redux/todoSlice";
 import { toggleTheme } from "../redux/themeSlice";
 
 const Todo = ({ darkMode, setDarkMode }) => {
   const [inputValue, setInputValue] = useState("");
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos.todos);
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
 
@@ -39,6 +39,18 @@ const Todo = ({ darkMode, setDarkMode }) => {
     dispatch(clearCompleted());
   };
 
+  const handleShowAllTodos = () => {
+    dispatch(showAllTodos());
+  }
+
+  const handleShowActiveTodos = () => {
+    dispatch(showActiveTodos());
+  }
+
+  const handleShowCompletedTodos = () => {
+    dispatch(showCompletedTodos());
+  }
+
   console.log(todos);
   return (
     <div className={`${theme === 'dark' ? 'dark todo' : 'todo'}`} >
@@ -65,18 +77,18 @@ const Todo = ({ darkMode, setDarkMode }) => {
       </div>
       
       <div className="todo-list">
-      {todos.todos.map((todo) => (
+      {todos.map((todo) => (
           <div className="todo-item" key={todo.id}>
           <input type="checkbox"  className= "completed" onChange={() => handleToggleTodo(todo.id)}/>
-          <h3>{todo.title}</h3>
+          <h3>{todo.text.title}</h3>
         </div>
         ))}
         <div className="filter-section">
-          <p>{todos.todos.length} items left</p>
+          <p>{todos.length} items left</p>
           <div className="filter">
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={() => todos}>All</button>
+            <button onClick={() => todos.filter(todo => todo.completed === false)}>Active</button>
+            <button onClick={() => todos.filter(todo => todo.completed === true)}>Completed</button>
           </div>
           <div className="clear">
             <button onClick={handleClearCompleted}>Clear Completed</button>
