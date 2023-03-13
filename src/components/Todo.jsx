@@ -1,6 +1,5 @@
 import moon from "../assests/images/icon-moon.svg";
 import sun from "../assests/images/icon-sun.svg";
-import checked from "../assests/images/icon-check.svg";
 import "../assests/styles/todo.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
