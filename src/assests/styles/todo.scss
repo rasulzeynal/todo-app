@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   .head-section {
     background-image: url("../images/bg-desktop-light.jpg");
     height: 300px;
@@ -106,6 +106,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: #ffffff;
+      height: 55px;
       p {
         font-weight: 400;
         font-size: 14px;
@@ -183,6 +185,9 @@
             background: #25273D;
         }
     }
+  }
+  .filter-section{
+    background-color: #25273D !important;
   }
 }
 

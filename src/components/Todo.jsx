@@ -1,16 +1,38 @@
 import moon from "../assests/images/icon-moon.svg";
 import sun from "../assests/images/icon-sun.svg";
+import checked from "../assests/images/icon-check.svg";
 import "../assests/styles/todo.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo,toggleTodo, clearCompleted,showAllTodos, showActiveTodos, showCompletedTodos } from "../redux/todoSlice";
+import { addTodo,toggleTodo, clearCompleted} from "../redux/todoSlice";
 import { toggleTheme } from "../redux/themeSlice";
+import { VisibilityFilters, setVisibilityFilter  } from '../redux/filterSlice';
+import { createSelector } from 'reselect'
 
-const Todo = ({ darkMode, setDarkMode }) => {
+const Todo = () => {
   const [inputValue, setInputValue] = useState("");
-  const todos = useSelector((state) => state.todos.todos);
   const theme = useSelector((state) => state.theme);
+  const getVisibilityFilter = state => state.filter
+const getTodos = state => state.todos.todos
+
+
+const getVisibleTodos = createSelector(
+  [getVisibilityFilter, getTodos],
+  (visibilityFilter, todos) => {
+    switch (visibilityFilter) {
+      case VisibilityFilters.SHOW_ALL:
+        return todos
+      case VisibilityFilters.SHOW_COMPLETED:
+        return todos.filter(todo => todo.completed)
+      case VisibilityFilters.SHOW_ACTIVE:
+        return todos.filter(todo => !todo.completed)
+      default:
+        throw new Error('Unknown filter: ' + visibilityFilter)
+    }
+  }
+)
+const todos = useSelector(getVisibleTodos)
   const dispatch = useDispatch();
 
   function handleToggleTheme() {
@@ -38,18 +60,6 @@ const Todo = ({ darkMode, setDarkMode }) => {
   const handleClearCompleted = () => {
     dispatch(clearCompleted());
   };
-
-  const handleShowAllTodos = () => {
-    dispatch(showAllTodos());
-  }
-
-  const handleShowActiveTodos = () => {
-    dispatch(showActiveTodos());
-  }
-
-  const handleShowCompletedTodos = () => {
-    dispatch(showCompletedTodos());
-  }
 
   console.log(todos);
   return (
@@ -79,16 +89,16 @@ const Todo = ({ darkMode, setDarkMode }) => {
       <div className="todo-list">
       {todos.map((todo) => (
           <div className="todo-item" key={todo.id}>
-          <input type="checkbox"  className= "completed" onChange={() => handleToggleTodo(todo.id)}/>
-          <h3>{todo.text.title}</h3>
+          <input type="checkbox"  className= "completed" onChange={() => handleToggleTodo(todo.id)} checked={todo.completed}/>
+          <h3 style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>{todo.text.title}</h3>
         </div>
         ))}
         <div className="filter-section">
-          <p>{todos.length} items left</p>
+          <p>{todos.length === 0 ? 'No items' : `${todos.length} items left`  }</p>
           <div className="filter">
-            <button onClick={() => todos}>All</button>
-            <button onClick={() => todos.filter(todo => todo.completed === false)}>Active</button>
-            <button onClick={() => todos.filter(todo => todo.completed === true)}>Completed</button>
+            <button onClick={() => dispatch(setVisibilityFilter(VisibilityFilters.SHOW_ALL))}>All</button>
+            <button onClick={() => dispatch(setVisibilityFilter(VisibilityFilters.SHOW_ACTIVE))}>Active</button>
+            <button onClick={() => dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))}>Completed</button>
           </div>
           <div className="clear">
             <button onClick={handleClearCompleted}>Clear Completed</button>
