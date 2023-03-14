@@ -64,7 +64,6 @@ const Todo = () => {
     dispatch(clearCompleted());
   };
 
-  console.log(todos);
   return (
     <div className={`${theme === "dark" ? "dark todo" : "todo"}`}>
       <div className="head-section">
@@ -96,17 +95,19 @@ const Todo = () => {
           <div className="todo-item" key={todo.id}>
             <input
               type="checkbox"
-              className="completed"
+              className={`my-checkbox ${todo.completed ? "checked" : ""}`}
               onChange={() => handleToggleTodo(todo.id)}
               checked={todo.completed}
+              id="check"
             />
-            <h3
+            <label
               style={{
                 textDecoration: todo.completed ? "line-through" : "none",width:"90%"
               }}
+              htmlFor="check"
             >
               {todo.text.title}
-            </h3>
+            </label>
             <MdClear onClick={() => handleDelete(todo.id)} className="icon" style={{position:"relative", right:"5px"}}/>
           </div>
         ))}

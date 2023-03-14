@@ -1,4 +1,5 @@
 import './App.scss';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import Todo from './components/Todo';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
