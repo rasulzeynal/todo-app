@@ -100,6 +100,19 @@
         color: #9495a5;
         
       }
+      .icon{
+        display: none;
+      }
+
+      &:hover{
+        .icon{
+          display: block;
+          cursor: pointer;
+          font-size: 20px;
+          color: #494C6B;
+      }
+      }
+      
     }
     .filter-section {
       padding: 10px 20px;
