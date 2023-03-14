@@ -143,7 +143,6 @@ const Todo = () => {
           </div>
         </div>
       </div>
-      <h4>Drag and drop to reorder list</h4>
     </div>
   );
 };
