@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   todos: [],
 };
 
 const todoSlice = createSlice({
-  name: 'todos',
+  name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action) => {
@@ -23,17 +23,20 @@ const todoSlice = createSlice({
       }
     },
     deleteTodo: (state, action) => {
-      const todoIndex = state.todos.findIndex(todo => todo.id === action.payload)
+      const todoIndex = state.todos.findIndex(
+        (todo) => todo.id === action.payload
+      );
       if (todoIndex !== -1) {
-        state.todos.splice(todoIndex, 1)
+        state.todos.splice(todoIndex, 1);
       }
     },
     clearCompleted: (state) => {
       state.todos = state.todos.filter((todo) => !todo.completed);
     },
-  }
+  },
 });
 
-export const { addTodo, deleteTodo, toggleTodo, clearCompleted} = todoSlice.actions;
+export const { addTodo, deleteTodo, toggleTodo, clearCompleted } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;

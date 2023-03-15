@@ -85,7 +85,7 @@
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
       }
-      input[type="checkbox"]{
+      input[type="checkbox"] {
         appearance: none;
         -webkit-appearance: none;
         height: 18px;
@@ -99,18 +99,18 @@
         justify-content: center;
         margin-right: 10px;
       }
-      input[type="checkbox"]:after{
+      input[type="checkbox"]:after {
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
-        content:"\f00c";
+        content: "\f00c";
         font-size: 10px;
         color: white;
         display: none;
       }
-      input[type="checkbox"]:checked{
+      input[type="checkbox"]:checked {
         background-color: #ae6bf0;
       }
-      input[type="checkbox"]:checked:after{
+      input[type="checkbox"]:checked:after {
         display: block;
       }
       label {
@@ -121,19 +121,18 @@
         color: #9495a5;
         cursor: pointer;
       }
-      .icon{
+      .icon {
         display: none;
       }
 
-      &:hover{
-        .icon{
+      &:hover {
+        .icon {
           display: block;
           cursor: pointer;
           font-size: 20px;
-          color: #494C6B;
+          color: #494c6b;
+        }
       }
-      }
-      
     }
     .filter-section {
       padding: 10px 20px;
@@ -161,12 +160,12 @@
           color: #9495a5;
           cursor: pointer;
 
-          &:hover{
-            color: #494C6B;;
+          &:hover {
+            color: #494c6b;
           }
 
-          &:focus{
-            color: #3A7CFD;
+          &:focus {
+            color: #3a7cfd;
           }
         }
       }
@@ -182,8 +181,8 @@
           color: #9495a5;
           cursor: pointer;
 
-          &:hover{
-            color: #494C6B;;
+          &:hover {
+            color: #494c6b;
           }
         }
       }
@@ -219,72 +218,73 @@
     }
   }
 
-  .todo-list{
-    background: #25273D;
+  .todo-list {
+    background: #25273d;
     box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
 
-    .todo-item{
-        background: #25273D;
-        border-bottom: 1px solid #aaa8a8 ;
+    .todo-item {
+      background: #25273d;
+      border-bottom: 1px solid #aaa8a8;
 
-        input{
-            background: #25273D;
-        }
+      input[type="checkbox"] {
+        background: #25273d !important;
+      }
+      input[type="checkbox"]:checked {
+        background-color: #ae6bf0 !important;
+      }
     }
   }
-  .filter-section{
-    background-color: #25273D !important;
+  .filter-section {
+    background-color: #25273d !important;
 
-    button{
-      color:#5B5E7E !important;
+    button {
+      color: #5b5e7e !important;
 
-      &:hover{
-        color: #E3E4F1 !important;
+      &:hover {
+        color: #e3e4f1 !important;
       }
     }
 
-    .filter{
-      button{
-        &:focus{
-        color: #3A7CFD !important;
+    .filter {
+      button {
+        &:focus {
+          color: #3a7cfd !important;
+        }
       }
-      }
-      
     }
   }
 }
 
-
-@media (max-width:576px) {
-  .todo{
-    .head-section{
+@media (max-width: 576px) {
+  .todo {
+    .head-section {
       height: 200px;
       width: 100vw;
-      .header{
-        width:325px;
+      .header {
+        width: 325px;
         height: 20px;
 
-        h1{
+        h1 {
           font-size: 25px;
           letter-spacing: 10px;
         }
-        img{
+        img {
           width: 20px;
           height: 20px;
         }
       }
-      .input{
+      .input {
         width: 327px;
         height: 48px;
         border-radius: 3px;
         padding: 8px 15px;
 
-        button{
+        button {
           width: 15px;
           height: 15px;
           margin-right: 6px;
         }
-        input{
+        input {
           height: 28px;
           font-size: 14px;
           line-height: 14px;
@@ -292,16 +292,16 @@
         }
       }
     }
-    .todo-list{
+    .todo-list {
       width: 327px;
       margin-top: -16px;
 
-      .todo-item{
+      .todo-item {
         width: 327px;
         height: 48px;
         padding: 8px 15px;
 
-        input[type="checkbox"]{
+        input[type="checkbox"] {
           height: 15px;
           width: 15px;
           margin-right: 6px;
@@ -311,23 +311,24 @@
           line-height: 14px;
           letter-spacing: -0.16px;
         }
-        .icon{
+        .icon {
           display: block;
         }
       }
     }
 
-    .filter-section{
+    .filter-section {
       padding: 8px 15px;
-      height: 48px;position: relative;
+      height: 48px;
+      position: relative;
 
-      p{
+      p {
         font-size: 12px;
         line-height: 12px;
         letter-spacing: -0.16px;
       }
 
-      .filter{
+      .filter {
         width: 327px;
         height: 48px;
         position: absolute;
@@ -339,16 +340,17 @@
         box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
         border-radius: 5px;
 
-        button{
+        button {
           padding: 10px !important;
         }
       }
     }
   }
-  .dark{
-    .filter{
-      background-color: #25273D !important;
-      color: #5B5E7E !important;
+  .dark {
+    .filter {
+      background-color: #25273d !important;
+      color: #5b5e7e !important;
+      box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5) !important;
     }
   }
 }

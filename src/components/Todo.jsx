@@ -1,11 +1,16 @@
 import moon from "../assests/images/icon-moon.svg";
 import sun from "../assests/images/icon-sun.svg";
 import "../assests/styles/todo.scss";
-import { MdClear } from 'react-icons/md';
+import { MdClear } from "react-icons/md";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo,deleteTodo , toggleTodo, clearCompleted } from "../redux/todoSlice";
+import {
+  addTodo,
+  deleteTodo,
+  toggleTodo,
+  clearCompleted,
+} from "../redux/todoSlice";
 import { toggleTheme } from "../redux/themeSlice";
 import { VisibilityFilters, setVisibilityFilter } from "../redux/filterSlice";
 import { createSelector } from "reselect";
@@ -53,8 +58,8 @@ const Todo = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteTodo(id)) 
-  }
+    dispatch(deleteTodo(id));
+  };
 
   const handleToggleTodo = (id) => {
     dispatch(toggleTodo(id));
@@ -102,13 +107,18 @@ const Todo = () => {
             />
             <label
               style={{
-                textDecoration: todo.completed ? "line-through" : "none",width:"90%"
+                textDecoration: todo.completed ? "line-through" : "none",
+                width: "90%",
               }}
               htmlFor="check"
             >
               {todo.text.title}
             </label>
-            <MdClear onClick={() => handleDelete(todo.id)} className="icon" style={{position:"relative", right:"5px"}}/>
+            <MdClear
+              onClick={() => handleDelete(todo.id)}
+              className="icon"
+              style={{ position: "relative", right: "5px" }}
+            />
           </div>
         ))}
         <div className="filter-section">
