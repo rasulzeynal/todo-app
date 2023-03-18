@@ -68,7 +68,6 @@ const Todo = () => {
   const handleClearCompleted = () => {
     dispatch(clearCompleted());
   };
-  console.log(theme);
 
   return (
     <div className={`${theme === "dark" ? "dark todo" : "todo"}`}>
