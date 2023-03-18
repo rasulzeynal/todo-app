@@ -68,6 +68,7 @@ const Todo = () => {
   const handleClearCompleted = () => {
     dispatch(clearCompleted());
   };
+  console.log(theme);
 
   return (
     <div className={`${theme === "dark" ? "dark todo" : "todo"}`}>
@@ -109,6 +110,7 @@ const Todo = () => {
               style={{
                 textDecoration: todo.completed ? "line-through" : "none",
                 width: "90%",
+                color: todo.completed ? (theme === "light" ? "#D1D2DA" : "#4D5067") : (theme === "dark" ? "#C8CBE7" : "#494C6B") 
               }}
               htmlFor="check"
             >

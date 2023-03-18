@@ -41,6 +41,7 @@
       display: flex;
       align-items: center;
       padding: 10px 20px;
+      
       button {
         width: 20px;
         height: 20px;
@@ -59,7 +60,6 @@
         line-height: 18px;
         letter-spacing: -0.25px;
         font-weight: 400;
-        color: #9495a5;
       }
     }
   }
@@ -98,6 +98,7 @@
         align-items: center;
         justify-content: center;
         margin-right: 10px;
+        color: #393A4B;
       }
       input[type="checkbox"]:after {
         font-family: "Font Awesome 6 Free";
@@ -214,6 +215,7 @@
       }
       input {
         background-color: #25273d !important;
+        color: #C8CBE7 !important;
       }
     }
   }
@@ -228,6 +230,7 @@
 
       input[type="checkbox"] {
         background: #25273d !important;
+        color: #C8CBE7 !important;
       }
       input[type="checkbox"]:checked {
         background-color: #ae6bf0 !important;
