@@ -103,7 +103,7 @@ const Todo = () => {
               className={`my-checkbox ${todo.completed ? "checked" : ""}`}
               onChange={() => handleToggleTodo(todo.id)}
               checked={todo.completed}
-              id="check"
+              id={todo.id}
             />
             <label
               style={{
@@ -111,7 +111,7 @@ const Todo = () => {
                 width: "90%",
                 color: todo.completed ? (theme === "light" ? "#D1D2DA" : "#4D5067") : (theme === "dark" ? "#C8CBE7" : "#494C6B") 
               }}
-              htmlFor="check"
+              htmlFor={todo.id}
             >
               {todo.text.title}
             </label>
